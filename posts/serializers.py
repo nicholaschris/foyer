@@ -4,7 +4,7 @@ from authentication.serializers import Account
 from posts.models import Post
 
 class PostSerializer(serializers.ModelSerializer):
-    author = AccountSerializer(read_only=True)
+    author = AccountSerializer(read_only=True, required=False)
 
     class Meta:
         model = Post
