@@ -61,6 +61,7 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
+        print(serializer.is_valid())
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
 

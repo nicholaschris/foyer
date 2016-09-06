@@ -6,7 +6,9 @@
             'foyer.routes',
             'foyer.authentication',
             'foyer.config',
-            'foyer.layout'
+            'foyer.layout',
+            'foyer.posts',
+            'foyer.utils'
         ]);
 
     angular

@@ -1,0 +1,15 @@
+<div ng-cloak>
+  <div ng-repeat="column in vm.columns">
+    <div>
+      <div ng-repeat="post in column">
+        <post post="post"></post>
+      </div>
+    </div>
+  </div>
+
+  <div ng-hide="vm.columns && vm.columns.length">
+    <div class="col-sm-12 no-posts-here">
+      <em>The are no posts here.</em>
+    </div>
+  </div>
+</div>
