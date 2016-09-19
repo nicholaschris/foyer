@@ -5,7 +5,7 @@
 (function () {
   'use strict';
   console.log("This is the new post controller");
-  
+
   angular
     .module('foyer.posts.controllers')
     .controller('NewPostController', NewPostController);
@@ -44,6 +44,14 @@
       */
       function createPostSuccessFn(data, status, headers, config) {
         Snackbar.show('Success! Post created.');
+        setTimeout(function() {
+            var snackbars = document.getElementsByClassName('snackbar');
+            for (var i=0;i < snackbars.length;i++) {
+                console.log("Removing snackbar...");
+                snackbars[i].parentNode.removeChild(snackbars[i]);
+                console.log("Removed snackbar!");
+            }
+        }, 1000);
       }
 
 

@@ -1,0 +1,13 @@
+.posts {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.well {
+    min-width: 300px;
+    min-height: 100px;
+    margin: 20px;
+    padding: 20px;
+    background: #eee;
+    display: flex;
+}

@@ -8,7 +8,8 @@
             'foyer.config',
             'foyer.layout',
             'foyer.posts',
-            'foyer.utils'
+            'foyer.utils',
+            'foyer.profiles'
         ]);
 
     angular

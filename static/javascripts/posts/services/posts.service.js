@@ -20,13 +20,13 @@
             return $http.get('/api/v1/posts/');
         }
 
-        function create() {
+        function create(content) {
             return $http.post('/api/v1/posts/', {
                 content: content
             });
         }
 
-        function get() {
+        function get(username) {
             return $http.get('/api/v1/accounts/' + username + '/posts/')
         }
     }

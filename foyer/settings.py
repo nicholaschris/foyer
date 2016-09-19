@@ -12,8 +12,6 @@ SECRET_KEY = '$6(x*g_2g9l_*g8peb-@anl5^*8q!1w)k&e&2!i)t6$s8kia94'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -90,9 +88,29 @@ STATICFILES_FINDERS = (
 
 COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'debug' : True
+        },
+    },
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

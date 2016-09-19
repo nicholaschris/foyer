@@ -16,7 +16,6 @@
   */
   function PostsController($scope) {
     var vm = this;
-
     vm.columns = [];
 
     activate();
@@ -41,8 +40,9 @@
     */
     function calculateNumberOfColumns() {
       var width = $(window).width();
-
-      if (width >= 1200) {
+      if (width) {
+        return 1;
+      } else if (width >= 1200) {
         return 4;
       } else if (width >= 992) {
         return 3;
