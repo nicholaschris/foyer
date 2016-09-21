@@ -1,23 +1,22 @@
 <div>
   <div>
-    <h1>Login</h1>
 
-    <div>
-      <form role="form" ng-submit="vm.login()">
+    <div class="well">
+      <form class="form" role="form" ng-submit="vm.login()">
         <div ng-show="error" ng-bind="error"></div>
 
         <div class="form-group">
           <label for="login__email">Email</label>
-          <input type="text" class="form-control" id="login__email" ng-model="vm.email" placeholder="ex. john@example.com" />
+          <input class="form-input" type="text" class="form-control" id="login__email" ng-model="vm.email" placeholder="ex. john@example.com" />
         </div>
 
         <div class="form-group">
           <label for="login__password">Password</label>
-          <input type="password" class="form-control" id="login__password" ng-model="vm.password" placeholder="ex. thisisnotgoogleplus" />
+          <input class="form-input" type="password" class="form-control" id="login__password" ng-model="vm.password" placeholder="ex. thisisnotgoogleplus" />
         </div>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group button-group">
+          <button btn type="submit" class="btn btn-primary">Login</button>
         </div>
       </form>
     </div>
