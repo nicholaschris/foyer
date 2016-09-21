@@ -2,15 +2,15 @@
   "name": "foyer",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "chmod +x ./scripts/postInstall.sh && ./scripts/postInstall.sh"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "angular": "^1.5.7",
     "angular-cookies": "^1.5.7",
     "angular-route": "^1.5.7",
-    "ng-dialog": "^0.6.4"
+    "jquery": "^3.1.0",
+    "ng-dialog": "^0.6.4",
+    "underscore": "^1.8.3"
   }
 }
