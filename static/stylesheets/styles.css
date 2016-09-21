@@ -91,6 +91,18 @@ a:active  {
     justify-content: flex-end;
 }
 
+.with-margin {
+    margin: 20px;
+}
+
+.flex {
+    display: flex
+}
+
+.textarea {
+    padding: 5px;
+    flex: 1;
+}
 /*
  *
  * btns.css
