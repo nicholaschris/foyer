@@ -1,7 +1,7 @@
 <div ng-cloak>
     <div ng-repeat="column in vm.columns">
         <div class="posts">
-            <div ng-repeat="post in column">
+            <div ng-repeat="post in column" class="post-wrapper">
                 <post post="post"></post>
             </div>
         </div>
