@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html ng-app="foyer">
+<html>
 
 <head>
     <title>Foyer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/" /> {% include 'stylesheets.html' %}
+    <base href="/" />
+    {% include 'stylesheets.html' %}
 </head>
 
-<body>
-    {% include 'navbar.html' %}
+<body ng-app='app'>
+    <!-- <ui-view></ui-view> -->
+    <root>
 
-    <div>
-        <div>
-            <div class="ng-view">
-            </div>
-        </div>
-    </div>
+    </root>
+    <ui-view></ui-view>
+
 
     {% include 'javascripts.html' %}
 </body>

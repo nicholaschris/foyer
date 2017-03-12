@@ -1,5 +1,11 @@
 <div ng-cloak>
-    <div ng-repeat="column in vm.columns">
+    <div class="posts">
+        <div ng-repeat="post in posts" class="post-wrapper">
+            <post post='post' ></post>
+        </div>
+    </div>
+
+    <div ng-repeat="column in vm.columns" style="display:none">
         <div class="posts">
             <div ng-repeat="post in column" class="post-wrapper">
                 <post post="post"></post>

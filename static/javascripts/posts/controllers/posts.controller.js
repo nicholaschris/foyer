@@ -9,12 +9,12 @@
     .module('foyer.posts.controllers')
     .controller('PostsController', PostsController);
 
-  PostsController.$inject = ['$scope'];
+  PostsController.$inject = ['$scope', 'Posts'];
 
   /**
   * @namespace PostsController
   */
-  function PostsController($scope) {
+  function PostsController($scope, Posts) {
     var vm = this;
     vm.columns = [];
 
@@ -27,10 +27,22 @@
     * @memberOf foyer.posts.controllers.PostsController
     */
     function activate() {
-      $scope.$watchCollection(function () { return $scope.posts; }, render);
-      $scope.$watch(function () { return $(window).width(); }, render);
+        getPosts();
+        $scope.$watchCollection(function () { return $scope.posts; }, render);
+        $scope.$watch(function () { return $(window).width(); }, render);
     }
 
+    function successPosts(data, status, headers, config) {
+        vm.posts = data;
+    }
+
+    function errorPosts(data, status, headers, config) {
+        console.error("Error retrieving posts");
+    }
+
+    function getPosts() {
+        return Posts.all().then(successPosts, errorPosts)
+    }
 
     /**
     * @name calculateNumberOfColumns
@@ -101,6 +113,8 @@
     * @memberOf foyer.posts.controllers.PostsController
     */
     function render(current, original) {
+        console.log("current: ", current);
+        console.log("original: ", original);
       if (current !== original) {
         vm.columns = [];
 

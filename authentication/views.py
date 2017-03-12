@@ -9,10 +9,11 @@ from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
 
 class LogoutView(views.APIView):
-
+    
     permissions_classess = (permissions.IsAuthenticated,)
 
     def post(self, request, format=None):
+        print(request.data)
         logout(request)
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)

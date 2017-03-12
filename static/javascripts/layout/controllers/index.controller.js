@@ -9,8 +9,6 @@
 
     function IndexController($scope, Authentication, Posts, Snackbar) {
         var vm = this;
-        console.log(vm);
-        console.log("Is authenticated: ", Authentication.isAuthenticated());
 
         vm.isAuthenticated = Authentication.isAuthenticated();
 
