@@ -8,6 +8,19 @@ from authentication.models import Account
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer
 
+from django.http import HttpResponse
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+
+class JSONResponse(HttpResponse):
+    """
+    An HttpResponse that renders its content into JSON.
+    """
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+
 class LogoutView(views.APIView):
 
     permissions_classess = (permissions.IsAuthenticated,)
@@ -61,13 +74,14 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
-        print(serializer.is_valid())
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
 
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
-        return Response({
-            'status': 'Bad request',
-            'message': 'Account could not be created with received data.'
-        }, status=status.HTTP_400_BAD_REQUEST)
+        return JSONResponse(serializer.errors, status=400)
+        #
+        # return Response({
+        #     'status': 'Bad request',
+        #     'message': 'Account could not be created with received data.'
+        # }, status=status.HTTP_400_BAD_REQUEST)
