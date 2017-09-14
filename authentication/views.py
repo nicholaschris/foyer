@@ -10,7 +10,8 @@ from authentication.serializers import AccountSerializer
 
 from django.http import HttpResponse
 from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+# from rest_framework.parsers import JSONParser
+
 
 class JSONResponse(HttpResponse):
     """
@@ -20,6 +21,7 @@ class JSONResponse(HttpResponse):
         content = JSONRenderer().render(data)
         kwargs['content_type'] = 'application/json'
         super(JSONResponse, self).__init__(content, **kwargs)
+
 
 class LogoutView(views.APIView):
 
@@ -58,6 +60,7 @@ class LoginView(views.APIView):
                 'message': 'Username/password combination invalid.'
             }, status=status.HTTP_401_UNAUTHORIZED)
 
+
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
@@ -77,7 +80,8 @@ class AccountViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
 
-            return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+            return Response(serializer.validated_data,
+                            status=status.HTTP_201_CREATED)
 
         return JSONResponse(serializer.errors, status=400)
         #
