@@ -21,4 +21,4 @@ class UserModelTest(TestCase):
         user = Account.objects.create(email="a@b.com",
                                       password="abc",
                                       username="a")
-        self.assertTrue(user.is_authenticated())
+        self.assertTrue(user.is_authenticated)

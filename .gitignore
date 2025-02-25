@@ -18,6 +18,7 @@ staticfiles/
 
 #Virtualenv
 venv/
+.venv/
 
 # settings file
 foyer/settings.py

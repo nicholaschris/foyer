@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import include, url
+from django.urls import include, path, re_path
 from django.contrib import admin
 from rest_framework_nested import routers
 
@@ -32,10 +32,10 @@ accounts_router = routers.NestedSimpleRouter(
 accounts_router.register(r'posts', AccountPostsViewSet)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api/v1/', include(router.urls)),
-    url(r'^api/v1/', include(accounts_router.urls)),
-    url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
-    url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
-    url('^.*$', IndexView.as_view(), name='index'),
+    path('admin/', admin.site.urls),
+    path('api/v1/', include(router.urls)),
+    path('api/v1/', include(accounts_router.urls)),
+    path('api/v1/auth/login/', LoginView.as_view(), name='login'),
+    path('api/v1/auth/logout/', LogoutView.as_view(), name='logout'),
+    re_path(r'^.*$', IndexView.as_view(), name='index'), 
 ]
