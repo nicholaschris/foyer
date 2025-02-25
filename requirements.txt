@@ -1,16 +1,3 @@
-dj-database-url
-Django
-django-appconf
-django-compressor
-djangorestframework
-drf-nested-routers
-flake8
-jedi
-mccabe
-pep8
-pycodestyle
-pyflakes
-rcssmin
 rjsminasgiref==3.8.1
 dj-database-url==2.3.0
 Django==5.1.6
